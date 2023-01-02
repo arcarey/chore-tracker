@@ -17,7 +17,7 @@
         [ ] DELETE chore
         [ ] PUT chore as complete
         [ ] PUT chore as active on interval (cron)
-        [ ] GET
+        [√] GET
     [ ] completed_chore
         [ ] POST completed chore
         [ ] Delete completed chore

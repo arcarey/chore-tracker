@@ -94,7 +94,7 @@ ALTER TABLE "completed_chore" ADD CONSTRAINT "completed_chore_fk0" FOREIGN KEY (
 INSERT INTO chore ( "description", "val", "family_id" )
 VALUES ($1, $2, $3);
 
-SELECT FROM chore
+SELECT * FROM chore
 WHERE "family_id" = ($1);
 
 DELETE FROM chore
@@ -108,7 +108,7 @@ WHERE "id" = ($1);
 INSERT INTO completed_chore ("user_chore_id", "time_completed", "img_url")
 VALUES ($1, $2, $3);
 
-SELECT FROM completed_chore
+SELECT * FROM completed_chore
 WHERE "user_id" = ($1);
 
 
@@ -117,7 +117,7 @@ WHERE "user_id" = ($1);
 INSERT INTO family ("name")
 VALUES ($1);
 
-SELECT FROM family
+SELECT * FROM family
 WHERE "family_id" = ($1);
 
 
@@ -126,7 +126,7 @@ WHERE "family_id" = ($1);
 INSERT INTO goal_prog ("user_id", "cumulative_val", "description" )
 VALUES ($1, $2, $3);
 
-SELECT FROM goal_prog
+SELECT * FROM goal_prog
 WHERE "user_id" = ($1);
 
 
@@ -135,6 +135,6 @@ WHERE "user_id" = ($1);
 INSERT INTO user_chore ("user_id", "chore_id", "recurrence")
 VALUES ($1, $2, $3);
 
-SELECT FROM user_chore
+SELECT * FROM user_chore
 WHERE "user_id" = ($1);
 
