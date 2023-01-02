@@ -11,7 +11,8 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const choreRouter = require('./routes/chore.router');
 const completedChoreRouter = require('./routes/completed_chore.router');
-const goalProgRouter = require('./routes/goal-prog.router');
+const goalProgRouter = require('./routes/goal_prog.router');
+const familyRouter = require('./routes/family.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,6 +30,7 @@ app.use('/api/user', userRouter);
 app.use('/api/chore', choreRouter);
 app.use('/api/completed_chore', completedChoreRouter);
 app.use('/api/goal-prog', goalProgRouter);
+app.use('/api/family', familyRouter)
 
 // Serve static files
 app.use(express.static('build'));

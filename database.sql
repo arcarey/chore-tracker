@@ -4,10 +4,10 @@ CREATE TABLE "user" (
 	"id" serial NOT NULL,
 	"password" varchar(1000) NOT NULL,
 	"username" varchar(255) NOT NULL UNIQUE,
-	"is_parent" bool NOT NULL DEFAULT '1',
-	"num_of_goals_completed" int DEFAULT '1',
-	"family_id" int NOT NULL,
-	"profile_img_url" TEXT NOT NULL,
+	"is_parent" bool NOT NULL DEFAULT 'true',
+	"num_of_goals_completed" int DEFAULT '0',
+	"family_id" int,
+	"profile_img_url" TEXT,
 	CONSTRAINT "user_pk" PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
@@ -40,7 +40,7 @@ CREATE TABLE "user_chore" (
 
 
 
-CREATE TABLE "goal-prog" (
+CREATE TABLE "goal_prog" (
 	"user_id" serial NOT NULL,
 	"cumulative_val" int NOT NULL DEFAULT '100',
 	"progress" int NOT NULL DEFAULT '0',
@@ -81,7 +81,7 @@ ALTER TABLE "chore" ADD CONSTRAINT "chore_fk0" FOREIGN KEY ("family_id") REFEREN
 ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk1" FOREIGN KEY ("chore_id") REFERENCES "chore"("id");
 
-ALTER TABLE "goal-prog" ADD CONSTRAINT "goal-prog_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
+ALTER TABLE "goal_prog" ADD CONSTRAINT "goal_prog_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
 
 ALTER TABLE "completed_chore" ADD CONSTRAINT "completed_chore_fk0" FOREIGN KEY ("user_chore_id") REFERENCES "user_chore"("id");
@@ -89,6 +89,52 @@ ALTER TABLE "completed_chore" ADD CONSTRAINT "completed_chore_fk0" FOREIGN KEY (
 
 
 
+-- SQL Queries for CRUD
+-- chore table
+INSERT INTO chore ( "description", "val", "family_id" )
+VALUES ($1, $2, $3);
+
+SELECT FROM chore
+WHERE "family_id" = ($1);
+
+DELETE FROM chore
+WHERE "id" = ($1);
 
 
+
+
+
+-- completed_chore table
+INSERT INTO completed_chore ("user_chore_id", "time_completed", "img_url")
+VALUES ($1, $2, $3);
+
+SELECT FROM completed_chore
+WHERE "user_id" = ($1);
+
+
+
+-- family table
+INSERT INTO family ("name")
+VALUES ($1);
+
+SELECT FROM family
+WHERE "family_id" = ($1);
+
+
+
+-- goal_prog table
+INSERT INTO goal_prog ("user_id", "cumulative_val", "description" )
+VALUES ($1, $2, $3);
+
+SELECT FROM goal_prog
+WHERE "user_id" = ($1);
+
+
+
+-- user_chore table
+INSERT INTO user_chore ("user_id", "chore_id", "recurrence")
+VALUES ($1, $2, $3);
+
+SELECT FROM user_chore
+WHERE "user_id" = ($1);
 
