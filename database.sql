@@ -138,3 +138,11 @@ VALUES ($1, $2, $3);
 SELECT * FROM user_chore
 WHERE "user_id" = ($1);
 
+UPDATE user_chore
+    SET "is_active" = 'true'
+    WHERE "id" = ($1);
+
+UPDATE user_chore
+    SET "is_active" = 'false'
+    WHERE "id" = ($1);
+

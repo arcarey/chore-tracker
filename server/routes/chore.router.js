@@ -20,8 +20,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
-
-router.post('/', (req, res) => {
+// creates a new chore assigned to a whole family
+router.post('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
   INSERT INTO chore ( "description", "val", "family_id" )
   VALUES ($1, $2, $3);
@@ -37,7 +37,9 @@ router.post('/', (req, res) => {
 
 });
 
-router.delete('/', (req, res) => {
+
+// deletes a chore based on it's chore ID
+router.delete('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
   DELETE FROM chore
   WHERE "id" = ($1);  
@@ -51,5 +53,8 @@ router.delete('/', (req, res) => {
       res.sendStatus(500);      
     })
 })
+
+
+
 
 module.exports = router;

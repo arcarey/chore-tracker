@@ -2,8 +2,10 @@
 
 ## Back End
 [ ] CRUD LIST FOR BE
-    [ ] POST user with family name
+    [ ] POST non-parent user with family name/id
+    [ ] POST parent user with family name/id
     [ ] GET family name and id
+    [ ] GET user list by family id (family router???)
     [ ] PUT profile pic URL (Stretch)
     [ ] goal-prog
         [ ] POST new goal
@@ -13,11 +15,15 @@
         [ ] GET
     [ ] create a completed goal for the parent to see and reward?
     [ ] chore
-        [ ] POST new chore
-        [ ] DELETE chore
-        [ ] PUT chore as complete
-        [ ] PUT chore as active on interval (cron)
+        [√] POST new chore
+        [√] DELETE chore
         [√] GET
+    [ ] user_chore
+        [√] POST new chore instance assigned to user
+        [√] PUT chore as complete (/api/user_chore/complete)
+        [√] DELETE chore instance
+        [ ] PUT chore as active on interval (cron) make it's own file
+        [√] GET chore
     [ ] completed_chore
         [ ] POST completed chore
         [ ] Delete completed chore
