@@ -129,7 +129,9 @@ VALUES ($1, $2, $3);
 SELECT * FROM goal_prog
 WHERE "user_id" = ($1);
 
-
+UPDATE goal_prog
+    SET progress = progress + ($1)
+    WHERE "user_id" = ($2)
 
 -- user_chore table
 INSERT INTO user_chore ("user_id", "chore_id", "recurrence")

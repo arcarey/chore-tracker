@@ -30,7 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/chore', choreRouter);
 app.use('/api/completed_chore', completedChoreRouter);
-app.use('/api/goal-prog', goalProgRouter);
+app.use('/api/goal_prog', goalProgRouter);
 app.use('/api/family', familyRouter);
 app.use('/api/user_chore', userChoreRouter);
 
