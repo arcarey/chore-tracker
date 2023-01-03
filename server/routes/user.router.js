@@ -20,8 +20,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-  const isParent = req.body.is_parent;
+  const isParent = req.body.isParent;
   const familyId = req.body.family_id;
+
 
   const queryText = `INSERT INTO "user" (username, password, is_parent, family_id)
     VALUES ($1, $2, $3, $4) RETURNING id`;

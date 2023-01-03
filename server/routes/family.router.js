@@ -20,7 +20,7 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
     })
   });
 
-// GET list of childern in a family by ID excluding the parent
+// GET list of children in a family by ID excluding the parent
   router.get('/family_list', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT * FROM "user"
@@ -37,12 +37,13 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
     })
   });
 
-router.post('/', rejectUnauthenticated, (req, res) => {
+  // this registers a new family and sets the user as the family owner
+router.post('/register', rejectUnauthenticated, (req, res) => {
     const queryText = `
-    INSERT INTO family ("name")
-    VALUES ($1);
+    INSERT INTO family ("name", "id")
+    VALUES ($1, $2);
     `;
-    const queryValues = [req.body.family_name]
+    const queryValues = [req.body.familyName, req.user.id]
     pool
         .query(queryText, queryValues)
         .then(result => res.sendStatus(201))
@@ -51,6 +52,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);      
         })
 });
+
+
 
 
 module.exports = router;
