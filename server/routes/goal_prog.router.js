@@ -34,7 +34,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   .query(queryText, queryValues)
   .then(result => res.send(result.rows))
   .catch(err => {
-      console.log('Error making get request for chores', err);
+      console.log('Error making get request for goal progress', err);
       res.sendStatus(500);
   })
 });
@@ -54,7 +54,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
       .query(queryText, queryValue)
       .then(result => res.sendStatus(200))
       .catch(err => {
-          console.log('Error updating chore', err);
+          console.log('Error updating goal progress', err);
           res.sendStatus(500)
       })
 })
@@ -74,9 +74,25 @@ router.put('/edit', rejectUnauthenticated, (req, res) => {
       .query(queryText, queryValue)
       .then(result => res.sendStatus(200))
       .catch(err => {
-          console.log('Error updating chore', err);
+          console.log('Error updating goal progress', err);
           res.sendStatus(500)
       })
+});
+
+// Delete goal
+router.delete('/', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  DELETE FROM goal_prog
+  WHERE "user_id" = ($1);  
+  `;
+  const queryValue = [req.body.user_id]
+  pool
+    .query(queryText, queryValue)
+    .then(result => res.sendStatus(200))
+    .catch(err => {
+      console.log('Error Deleting goal', err);
+      res.sendStatus(500);      
+    })
 })
 
 module.exports = router;

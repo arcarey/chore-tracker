@@ -2,20 +2,21 @@
 
 ## Back End
 [ ] CRUD LIST FOR BE
-    [ ] USER router
-       [ ] POST non-parent user with family name/id
-       [ ] POST parent user with family name/id        [ ] GET user list by family id (family router???)
-    [ ] family router
-        [ ] GET by id
-        [ ] POST name
+    [√] USER router
+       [√] POST non-parent user with family name/id (this will have to be handled asyc on the FE in the login saga)
+       [√] POST parent user with family name/id (this will also be handled on the FE with the login saga)     
+       [√] GET user list by family id (family router???)
+    [√] family router
+        [√] GET by id
+        [√] POST name
         <!-- how do I assign that family ID when registering??? -->
-    [ ] goal-prog
+    [√] goal-prog
         [√] POST new goal
         [√] PUT goal prog
-        [ ] PUT new goal
-        [ ] DELETE goal
-        [ ] GET
-    [ ] create a completed goal for the parent to see and reward?
+        [√] PUT new goal
+        [√] DELETE goal
+        [√] GET
+    [√] create a completed goal for the parent to see and reward?
     [√] chore
         [√] POST new chore
         [√] DELETE chore
@@ -25,10 +26,10 @@
         [√] PUT chore as complete (/api/user_chore/complete)
         [√] DELETE chore instance
         [√] GET chore
-    [ ] completed_chore
-        [ ] POST completed chore
-        [ ] Delete completed chore
-        [ ] GET
+    [√] completed_chore
+        [√] POST completed chore
+        [√] Delete completed chore
+        [√] GET by user_id
     [ ] PUT chore as active on interval (cron) make it's own file
     [ ] PUT profile pic URL (Stretch)
 

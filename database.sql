@@ -118,7 +118,7 @@ INSERT INTO family ("name")
 VALUES ($1);
 
 SELECT * FROM family
-WHERE "family_id" = ($1);
+WHERE "id" = ($1);
 
 
 
