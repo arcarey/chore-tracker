@@ -33,11 +33,11 @@
     [ ] PUT chore as active on interval (cron) make it's own file (next week)
     [ ] build Nav routing to 8 views
     [ ] build login
-    [ ] build register 
-            [ ] register new user
-            [ ] then hit a register new family page
+    [√] build register 
+            [√] register new user
+            [√] then hit a register new family page
     [ ] build nav bar component
-    [ ] build logout component
+    [√] build logout component
     [ ] child task page
         [ ] child user card component
             [ ] progress component 
@@ -45,7 +45,7 @@
             [ ] delete btn
             [ ] assign btn
     [ ] add chore
-    [ ] add child
+    [ ] add child (this is an important new login function)
 
 
 

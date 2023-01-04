@@ -17,18 +17,34 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
+// this is the register route for a parent
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const isParent = req.body.isParent;
   const familyId = req.body.family_id;
+  const familyName = req.body.familyName
 
 
   const queryText = `INSERT INTO "user" (username, password, is_parent, family_id)
     VALUES ($1, $2, $3, $4) RETURNING id`;
   pool
     .query(queryText, [username, password, isParent, familyId])
-    .then(() => res.sendStatus(201))
+    .then(results => {
+      console.log(results.rows);
+      // res.sendStatus(201)
+      // add the returning ID as the key ID for the family in the 
+      pool.query(`INSERT INTO family ("name", "id") VALUES ($1, $2);`, [familyName, results.rows[0].id]
+      ).then(result => {
+        // this then updates the family ID to link the user to the family
+        pool.query(`UPDATE "user" SET family_id = $1 WHERE id = $1`, [results.rows[0].id])
+          .then(() => res.sendStatus(201))
+          .catch(err => {
+            console.log('user update family code failed', err);
+            res.sendStatus(500)
+          })
+      }).catch(err => console.log('family registration failed', err))
+    })
     .catch((err) => {
       console.log('User registration failed: ', err);
       res.sendStatus(500);

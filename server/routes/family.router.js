@@ -37,21 +37,21 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
     })
   });
 
-  // this registers a new family and sets the user as the family owner
-router.post('/register', rejectUnauthenticated, (req, res) => {
-    const queryText = `
-    INSERT INTO family ("name", "id")
-    VALUES ($1, $2);
-    `;
-    const queryValues = [req.body.familyName, req.user.id]
-    pool
-        .query(queryText, queryValues)
-        .then(result => res.sendStatus(201))
-        .catch(err => {
-        console.log('Error adding family name');
-        res.sendStatus(500);      
-        })
-});
+  // this registers a new family and sets the user as the family owner (UNUSED)
+// router.post('/register', rejectUnauthenticated, (req, res) => {
+//     const queryText = `
+//     INSERT INTO family ("name", "id")
+//     VALUES ($1, $2);
+//     `;
+//     const queryValues = [req.body.familyName, req.user.id]
+//     pool
+//         .query(queryText, queryValues)
+//         .then(result => res.sendStatus(201))
+//         .catch(err => {
+//         console.log('Error adding family name');
+//         res.sendStatus(500);      
+//         })
+// });
 
 
 
