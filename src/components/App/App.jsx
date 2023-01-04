@@ -19,7 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import AddChildPage from '../AddChildPage/AddChildPage'
+import AddChildPage from '../AddChildPage/AddChildPage';
+import AddChorePage from '../AddChorePage/AddChorePage';
 
 import './App.css';
 
@@ -119,6 +120,13 @@ function App() {
             <AddChildPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // logged in shows AddChildPage else shows LoginPage
+            exact
+            path="/addchore"
+          >
+            <AddChorePage />
+          </ProtectedRoute>
 
 
 

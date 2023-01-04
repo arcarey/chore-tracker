@@ -46,6 +46,38 @@
             [ ] assign btn
     [ ] add chore
     [ ] add child (this is an important new login function)
+        [ ] add child saga
+        [ ] add new user store
+        [ ] render list of children for each family in it's own component under the add new child page
+        [ ] add name column to user table so each child can be displayed by name
+
+
+PRIORITY LIST:
+    ADD CHILD
+    ADD TASKS
+    
+    Make list component:
+        delete on or off (with an are you sure alert)
+        can list chores (with assign btn for child list and completed button),
+        children users in a family, chores assigned 
+    
+    ASSIGN/UNASSIGN TASKS TO CHILD
+    LOGIN AS CHILD TO SEE TASK LIST
+    MARK TASKS AS COMPLETE
+    COMPLETE TASK LIST PER CHILD
+    COMPLETE TASK LIST VIEW FOR PARENT
+    COMPLETE TASK LIST VIEW FOR EACH CHILD
+    TASK RECURRENCE SETUP
+    REMOVE CHILD
+
+
+    AFTER FULL CRUD DEMO
+    ROUTING/NAV
+    MUI header and themes (conditional theme for kids and adults??? probably not...)
+
+
+    ADD GOAL/GOAL PROGRESS
+    
 
 
 

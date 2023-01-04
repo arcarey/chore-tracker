@@ -6,19 +6,24 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useDispatch } from "react-redux";
 
 
 
 export default function addChild() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-      nickname: data.get('nickName'),
-    });
-  };
+    const dispatch = useDispatch();
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+        description: data.get('chore'),
+        });
+        dispatch({type: 'ADD_CHORE', payload: {
+            description: data.get('chore'),
+            }})
+    };
 
   return (
       <Container component="main" maxWidth="xs">
@@ -32,38 +37,18 @@ export default function addChild() {
           }}
         >
           <Typography component="h1" variant="h5">
-            Add Child
+            Add Chore
           </Typography>
           <Box component="form" onSubmit={handleSubmit} >
           <TextField
               margin="normal"
               required
               fullWidth
-              id="nickName"
-              label="Nick Name"
-              name="nickName"
-              autoComplete="nickName"
+              id="chore"
+              label="New Chore"
+              name="chore"
+              autoComplete="chore"
               autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label="User Name"
-              name="username"
-              autoComplete="username"
-              autoFocus
-            />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
             />
 
             <Button
@@ -72,7 +57,7 @@ export default function addChild() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Add Child
+              Add Chore
             </Button>
             <Grid container></Grid>
           </Box>
