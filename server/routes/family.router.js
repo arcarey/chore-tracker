@@ -23,7 +23,7 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
 // GET list of children in a family by ID excluding the parent
   router.get('/family_list', rejectUnauthenticated, (req, res) => {
     const queryText = `
-    SELECT * FROM "user"
+    SELECT id, nickname FROM "user"
     WHERE "family_id" = ($1)
     AND "is_parent" = 'false';
     `;

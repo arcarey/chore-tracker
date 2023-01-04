@@ -14,6 +14,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   res.send(req.user);
 });
 
+
 // Handles POST request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
@@ -21,7 +22,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/register', (req, res, next) => {
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-  const isParent = req.body.isParent;
+  const isParent = 'true';
   const familyId = req.body.family_id;
   const familyName = req.body.familyName
 
@@ -50,6 +51,30 @@ router.post('/register', (req, res, next) => {
       res.sendStatus(500);
     });
 });
+
+// handles the registration of a child
+router.post('/register_child', (req, res, next) => {
+  const username = req.body.username;
+  const password = encryptLib.encryptPassword(req.body.password);
+  const isParent = 'false';
+  const familyId = req.user.family_id;
+  const nickname = req.body.nickname
+
+
+  const queryText = `INSERT INTO "user" (username, password, is_parent, family_id, nickname)
+    VALUES ($1, $2, $3, $4, $5) RETURNING id`;
+  pool
+    .query(queryText, [username, password, isParent, familyId, nickname])
+    .then(results => {
+      console.log(results.rows);
+      res.sendStatus(201)
+      })
+    .catch((err) => {
+      console.log('User registration failed: ', err);
+      res.sendStatus(500);
+    });
+});
+
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

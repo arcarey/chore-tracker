@@ -6,18 +6,27 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
+import { useDispatch } from 'react-redux';
+
 
 
 
 export default function addChild() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-      nickname: data.get('nickName'),
+    const dispatch = useDispatch();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+        username: data.get('username'),
+        password: data.get('password'),
+        nickname: data.get('nickName'),
     });
+        dispatch({type: 'REGISTER_CHILD', payload:{
+            username: data.get('username'),
+            password: data.get('password'),
+            nickname: data.get('nickName'),
+        }})
   };
 
   return (
@@ -53,7 +62,6 @@ export default function addChild() {
               label="User Name"
               name="username"
               autoComplete="username"
-              autoFocus
             />
             <TextField
               margin="normal"

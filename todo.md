@@ -44,8 +44,9 @@
         [ ] task component
             [ ] delete btn
             [ ] assign btn
-    [ ] add chore
-    [ ] add child (this is an important new login function)
+    [√] add chore
+    [√] return array of chores
+        [ ] add child (this is an important new login function)
         [ ] add child saga
         [ ] add new user store
         [ ] render list of children for each family in it's own component under the add new child page
@@ -53,7 +54,7 @@
 
 
 PRIORITY LIST:
-    ADD CHILD
+    ADD CHILD (error handling for unique usernames)
     ADD TASKS
     
     Make list component:
@@ -72,6 +73,7 @@ PRIORITY LIST:
 
 
     AFTER FULL CRUD DEMO
+    CLEARING INPUTS
     ROUTING/NAV
     MUI header and themes (conditional theme for kids and adults??? probably not...)
 
