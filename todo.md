@@ -30,7 +30,26 @@
         [√] POST completed chore
         [√] Delete completed chore
         [√] GET by user_id
-    [ ] PUT chore as active on interval (cron) make it's own file
+    [ ] PUT chore as active on interval (cron) make it's own file (next week)
+    [ ] build Nav routing to 8 views
+    [ ] build login
+    [√] build register 
+            [√] register new user
+            [√] then hit a register new family page
+    [ ] build nav bar component
+    [√] build logout component
+    [ ] child task page
+        [ ] child user card component
+            [ ] progress component 
+        [ ] task component
+            [ ] delete btn
+            [ ] assign btn
+    [ ] add chore
+    [ ] add child (this is an important new login function)
+
+
+
+
     [ ] PUT profile pic URL (Stretch)
 
 

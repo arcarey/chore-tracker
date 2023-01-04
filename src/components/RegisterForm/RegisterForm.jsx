@@ -17,6 +17,7 @@ function RegisterForm() {
         username: username,
         password: password,
         familyName: familyName,
+        isParent: 'false'
       },
     });
   }; // end registerUser
@@ -53,7 +54,7 @@ function RegisterForm() {
           />
         </label>
       </div>
-      {/* <div>
+      <div>
         <label htmlFor="familyName">
           Family Name:
           <input
@@ -64,7 +65,7 @@ function RegisterForm() {
             onChange={(event) => setFamilyName(event.target.value)}
           />
         </label>
-      </div> */}
+      </div>
 
       <div>
         <input className="btn" type="submit" name="submit" value="Register" />
