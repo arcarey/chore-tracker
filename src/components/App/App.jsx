@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddChildPage from '../AddChildPage/AddChildPage';
 import AddChorePage from '../AddChorePage/AddChorePage';
+import AssignChorePage from '../AssignChorePage/AssignChorePage';
 
 import './App.css';
 
@@ -127,6 +128,15 @@ function App() {
           >
             <AddChorePage />
           </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows AddChildPage else shows LoginPage
+            exact
+            path="/child/assign/:id"
+          >
+            <AssignChorePage />
+          </ProtectedRoute>
+
 
 
 

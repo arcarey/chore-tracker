@@ -3,7 +3,6 @@ import axios from 'axios';
 
 
 function* fetchChildren(action){
-    console.log(action.payload)
     try {
         const chores = yield axios.get('/api/family/family_list');
         yield put({ type: 'SET_CHILDREN', payload: chores.data})

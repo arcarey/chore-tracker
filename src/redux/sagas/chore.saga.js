@@ -14,7 +14,6 @@ function* addChore(action){
 }
 
 function* fetchChores(action){
-    console.log(action.payload)
     try {
         const chores = yield axios.get('/api/chore');
         yield put({ type: 'SET_CHORES', payload: chores.data})
