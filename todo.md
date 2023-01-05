@@ -76,6 +76,7 @@ PRIORITY LIST:
 
 
     AFTER FULL CRUD DEMO
+    conditional render of delete button on child list
     CLEARING INPUTS
     ROUTING/NAV
     MUI header and themes (conditional theme for kids and adults??? probably not...)

@@ -58,12 +58,13 @@ router.put('/', rejectUnauthenticated, (req, res) => {
 })
 
 // Delete chore instance
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.put('/delete/', rejectUnauthenticated, (req, res) => {
+    console.log('del req body', req.body);
     const queryText = `
     DELETE FROM user_chore
-    WHERE "id" = ($1);  
+    WHERE "user_id" = ($1) AND "chore_id" = ($2);  
     `;
-    const queryValue = [req.body.id]
+    const queryValue = [req.body.userId, req.body.choreId]
     pool
       .query(queryText, queryValue)
       .then(result => res.sendStatus(200))

@@ -26,8 +26,8 @@ function* fetchUserChores(action){
 
 function* deleteChore(action){
     try{
-        yield axios.delete(`/api/user_chore/${action.payload.id}`, action.payload)
-        yield put({type: 'FETCH_USER_CHORES'});
+        yield axios.put(`/api/user_chore/delete/`, action.payload)
+        yield put({type: 'FETCH_USER_CHORES', payload: action.payload.userId});
     } catch(err){
         console.log('Error deleting user chore', err);
     }

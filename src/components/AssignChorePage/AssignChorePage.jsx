@@ -7,7 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '@mui/system';
+import Divider from '@mui/material/Divider';
 import { CssBaseline, Box, Typography } from '@mui/material';
+import ChildList from '../ChildList/ChildList';
 
 export default function ChoreList() {
     const dispatch = useDispatch();
@@ -26,19 +28,15 @@ export default function ChoreList() {
         dispatch({type: 'FETCH_CHORES'});
         dispatch({type: 'GET_CURRENT_CHILD', payload: currentChildId})
         dispatch({type: 'FETCH_USER_CHORES', payload: currentChildId});
-
       }, []);
-
-    
-
-    
-
     
     // toggles the task as assigned or unassigned to a person
     const handleToggle = (choreId) => {
-        dispatch({type: 'ADD_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
-        // dispatch({type: 'FETCH_USER_CHORES', payload: currentChildId});
-        console.log(choreId, currentChild.id);
+        if (userChores.map(userChore => userChore.chore_id).indexOf(choreId) !== -1){
+            dispatch({type: 'DELETE_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
+        } else{
+            dispatch({type: 'ADD_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
+        }
     }
 
 return (
@@ -63,7 +61,7 @@ return (
                     <Switch
                         edge="end"
                         onChange={() => handleToggle(chore.id)}
-                        checked={userChores.map(userChore => userChore.id).indexOf(chore.id) !== -1}
+                        checked={userChores.map(userChore => userChore.chore_id).indexOf(chore.id) !== -1}
                     />
                 }
                 >
@@ -71,7 +69,8 @@ return (
                 </ListItem>
             ))}
         </List>
-
+        <Divider/>
+        <ChildList/>
         </Box>
     </Container>
 
