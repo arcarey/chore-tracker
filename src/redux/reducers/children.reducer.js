@@ -3,7 +3,7 @@ const childrenReducer = (state = [], action) => {
       case 'SET_CHILDREN':
         return action.payload;
       case 'UNSET_CHILDREN':
-        return {};
+        return [];
       default:
         return state;
     }

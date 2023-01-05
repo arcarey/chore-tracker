@@ -3,6 +3,8 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import chores from './chore.reducer';
 import children from './children.reducer';
+import currentChild from './currentChild.reducer';
+import userChores from './userChores.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -15,6 +17,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   chores, // contains a list of all chores for user in database
   children, // contains a list of all children users in database
+  currentChild, // contains the current child the parent user is assigning
+  userChores, // contains all the chores assigned to a specific user
 });
 
 export default rootReducer;

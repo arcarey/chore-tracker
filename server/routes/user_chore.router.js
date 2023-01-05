@@ -4,14 +4,14 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-// returns list of all chores for signed in user
-
-router.get('/', rejectUnauthenticated, (req, res) => {
+// returns list of all chores for a user
+router.put('/', rejectUnauthenticated, (req, res) => {
+    console.log('user id', req.body.id);
     const queryText = `
     SELECT * FROM user_chore
     WHERE "user_id" = ($1);    
     `;
-    const queryValues = [req.user.family_id]
+    const queryValues = [req.body.id]
     pool
     .query(queryText, queryValues)
     .then(result => res.send(result.rows))
@@ -25,11 +25,12 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   
 // add a chore instance for a user
 router.post('/', rejectUnauthenticated, (req, res) => {
+    console.log(req.body);
     const queryText = `
     INSERT INTO user_chore ("user_id", "chore_id", "recurrence")
     VALUES ($1, $2, $3);
     `;
-    const queryValues = [req.body.user_id, req.body.chore_id, req.body.recurrence]
+    const queryValues = [req.body.userId, req.body.choreId, req.body.recurrence]
     pool
       .query(queryText, queryValues)
       .then(result => res.sendStatus(201))

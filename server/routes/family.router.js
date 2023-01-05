@@ -53,6 +53,21 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
   })
 
 
+  // return active child
+  router.get(`/:id`, rejectUnauthenticated,(req, res) => {
+    const queryText = `
+    SELECT * from "user"
+    WHERE id = $1;
+    `;
+    const queryValue = [req.params.id];
+    pool
+      .query(queryText, queryValue)
+      .then( result => res.send(result.rows))
+      .catch(err => {
+        console.log('error in get current child', err);
+        res.sendStatus(500);
+      })
+  })
 
 
 module.exports = router;

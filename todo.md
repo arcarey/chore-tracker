@@ -53,23 +53,26 @@
         [ ] add name column to user table so each child can be displayed by name
 
 
-PRIORITY LIST:
-    ADD CHILD (error handling for unique usernames)
-    ADD TASKS
-    
-    Make list component:
-        delete on or off (with an are you sure alert)
-        can list chores (with assign btn for child list and completed button),
-        children users in a family, chores assigned 
-    
+PRIORITY LIST:    
     ASSIGN/UNASSIGN TASKS TO CHILD
+    READ WHETHER TASKS ARE ASSIGNED TO CHILD
+        LOCAL STATE FOR SWITCH POSITION
+        SWITCH ADDS AND REMOVES TASK FROM CHILD TASK LIST
+
+        
     LOGIN AS CHILD TO SEE TASK LIST
     MARK TASKS AS COMPLETE
+        DEACTIVATE TASK
+        CAN BE REACTIVATED BY PARENT???
+        CAN BE REACTIVATED BY SCHEDULER program
+
     COMPLETE TASK LIST PER CHILD
     COMPLETE TASK LIST VIEW FOR PARENT
     COMPLETE TASK LIST VIEW FOR EACH CHILD
+
     TASK RECURRENCE SETUP
-    REMOVE CHILD
+        some kind of tag on child detail page
+        
 
 
     AFTER FULL CRUD DEMO

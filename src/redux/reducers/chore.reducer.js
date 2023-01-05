@@ -3,7 +3,7 @@ const choreReducer = (state = [], action) => {
       case 'SET_CHORES':
         return action.payload;
       case 'UNSET_CHORES':
-        return {};
+        return [];
       default:
         return state;
     }

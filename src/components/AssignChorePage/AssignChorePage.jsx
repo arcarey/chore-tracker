@@ -2,8 +2,6 @@ import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
 import Switch from '@mui/material/Switch';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -14,31 +12,34 @@ import { CssBaseline, Box, Typography } from '@mui/material';
 export default function ChoreList() {
     const dispatch = useDispatch();
     
+    let currentChild = useSelector(store => store.currentChild)[0]
     let chores = useSelector(store => store.chores)
+    let userChores = useSelector(store => store.userChores)
+
+    let currentChildId = useParams().id
+    console.log('current child id', currentChildId);
 
     // we can use the params in the URL to know what child we are looking at
-    const params = useParams();
 
     // use Effect is causing this to happen on page load
     useEffect(() => {
-
-        dispatch({ type: 'FETCH_CHORES' });
-        dispatch({type: 'FETCH_CHILDREN'});
-        setCurrentChild(children.find(thisChild => thisChild.id == params.id));
-        console.log('current child:', currentChild);
-        console.log('Children array', children);
+        dispatch({type: 'FETCH_CHORES'});
+        dispatch({type: 'GET_CURRENT_CHILD', payload: currentChildId})
+        dispatch({type: 'FETCH_USER_CHORES', payload: currentChildId});
 
       }, []);
 
-
-
-    const [children, setChildren] = useState(useSelector(store => store.children));
-
-    const [currentChild, setCurrentChild] = useState(children.find(thisChild => thisChild.id == params.id))
     
+
     
-    // toggles the task in and out of the 
-    const handleToggle = (choreId) => {console.log(choreId, currentChild.id);}
+
+    
+    // toggles the task as assigned or unassigned to a person
+    const handleToggle = (choreId) => {
+        dispatch({type: 'ADD_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
+        // dispatch({type: 'FETCH_USER_CHORES', payload: currentChildId});
+        console.log(choreId, currentChild.id);
+    }
 
 return (
     <Container component="main" maxWidth="xs">
@@ -52,42 +53,27 @@ return (
         }}
         >
         <Typography component="h1" variant="h5">
-            {currentChild.nickname}
+            {currentChild?.nickname}
         </Typography>
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-            {chores.map((value) => (
+            {chores.map((chore) => (
                 <ListItem
-                key={value.id}
+                key={chore.id}
                     secondaryAction={
                     <Switch
                         edge="end"
-                        onChange={() => handleToggle(value.id)}
-                        // checked={checked.indexOf(value.id) !== -1}
-                        inputProps={{
-                          'aria-labelledby': 'switch-list-label-wifi',
-                        }}
+                        onChange={() => handleToggle(chore.id)}
+                        checked={userChores.map(userChore => userChore.id).indexOf(chore.id) !== -1}
                     />
                 }
                 >
-                <ListItemText primary={`${value.description}`} />
+                <ListItemText primary={`${chore.description}`} />
                 </ListItem>
             ))}
         </List>
 
         </Box>
     </Container>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 );
