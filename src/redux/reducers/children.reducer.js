@@ -1,4 +1,4 @@
-const childrenReducer = (state = {}, action) => {
+const childrenReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_CHILDREN':
         return action.payload;

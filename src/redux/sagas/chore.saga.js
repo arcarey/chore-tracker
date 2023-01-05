@@ -23,10 +23,20 @@ function* fetchChores(action){
     }
 }
 
+function* deleteChore(action){
+    try{
+        yield axios.delete(`/api/chore/${action.payload.id}`)
+        yield put({type: 'FETCH_CHORES'});
+    } catch(err){
+        console.log('Error deleting chore', err);
+    }
+}
+
 
 function* choreSaga(){
     yield takeLatest('ADD_CHORE', addChore);
     yield takeLatest('FETCH_CHORES', fetchChores);
+    yield takeLatest('DELETE_CHORE', deleteChore)
 }
 
 export default choreSaga;

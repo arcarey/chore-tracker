@@ -37,21 +37,20 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
     })
   });
 
-  // this registers a new family and sets the user as the family owner (UNUSED)
-// router.post('/register', rejectUnauthenticated, (req, res) => {
-//     const queryText = `
-//     INSERT INTO family ("name", "id")
-//     VALUES ($1, $2);
-//     `;
-//     const queryValues = [req.body.familyName, req.user.id]
-//     pool
-//         .query(queryText, queryValues)
-//         .then(result => res.sendStatus(201))
-//         .catch(err => {
-//         console.log('Error adding family name');
-//         res.sendStatus(500);      
-//         })
-// });
+  router.delete(`/family_list/:id`, rejectUnauthenticated,(req, res) => {
+    const queryText = `
+    DELETE from "user"
+    WHERE id = $1;
+    `;
+    const queryValue = [req.params.id];
+    pool
+      .query(queryText, queryValue)
+      .then( () => res.sendStatus(200))
+      .catch(err => {
+        console.log('error in del', err);
+        res.sendStatus(500);
+      })
+  })
 
 
 

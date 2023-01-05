@@ -1,4 +1,4 @@
-const choreReducer = (state = {}, action) => {
+const choreReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_CHORES':
         return action.payload;

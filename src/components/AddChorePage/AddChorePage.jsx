@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useDispatch } from "react-redux";
+import ChoreList from '../ChoreList/ChoreList';
 
 
 
@@ -61,6 +62,7 @@ export default function addChild() {
             </Button>
             <Grid container></Grid>
           </Box>
+          <ChoreList/>
         </Box>
       </Container>
   );

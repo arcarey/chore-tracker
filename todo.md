@@ -46,9 +46,9 @@
             [ ] assign btn
     [√] add chore
     [√] return array of chores
-        [ ] add child (this is an important new login function)
-        [ ] add child saga
-        [ ] add new user store
+        [√] add child (this is an important new login function)
+        [√] add child saga
+        [√] add new user store
         [ ] render list of children for each family in it's own component under the add new child page
         [ ] add name column to user table so each child can be displayed by name
 
@@ -88,5 +88,3 @@ PRIORITY LIST:
 
 
 
-1-2-22 DO ALL OF THESE TODAY, APPLY FOR 2 JOBS.
-THE FIRST THING I NEED TO DO IS GET LOGGED IN AS A USER THAT INCLUDES THEIR FAMILY ID
