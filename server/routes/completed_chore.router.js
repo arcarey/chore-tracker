@@ -9,7 +9,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   INSERT INTO completed_chore ("user_chore_id", "time_completed")
 	VALUES ($1, now());
   `;
-  const queryValues = [req.body.user_chore_id]
+  const queryValues = [req.body.userChoreId]
   pool
     .query(queryText, queryValues)
     .then(result => res.sendStatus(201))
@@ -37,13 +37,20 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 
+
+
+// DELETE by user_chore_id
 // DELETE by id
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
   DELETE FROM completed_chore
-  WHERE "user_id" = ($1);  
+  WHERE id = (SELECT id FROM completed_chore 
+    WHERE user_chore_id = ($1)
+    ORDER BY time_completed DESC
+    LIMIT '1');
   `;
-  const queryValue = [req.body.user_id]
+  const queryValue = [req.params.id]
+    console.log('queryValue',queryValue);
   pool
     .query(queryText, queryValue)
     .then(result => res.sendStatus(200))

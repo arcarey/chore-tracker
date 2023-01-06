@@ -24,6 +24,7 @@ import AddChorePage from '../AddChorePage/AddChorePage';
 import AssignChorePage from '../AssignChorePage/AssignChorePage';
 
 import './App.css';
+import ChildChorePage from '../ChildChorePage/ChildChorePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -137,7 +138,13 @@ function App() {
             <AssignChorePage />
           </ProtectedRoute>
 
-
+          <ProtectedRoute
+            // logged in shows AddChildPage else shows LoginPage
+            exact
+            path="/chores"
+          >
+            <ChildChorePage />
+          </ProtectedRoute>
 
 
           {/* If none of the other routes matched, we will show a 404. */}

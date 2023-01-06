@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import choreSaga from './chore.saga';
 import familySaga from './family.saga'
 import userChoreSaga from './userChore.saga';
+import completedChoreSaga from './completed.chore.saga'
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     choreSaga(),
     familySaga(),
     userChoreSaga(),
+    completedChoreSaga(),
   ]);
 }

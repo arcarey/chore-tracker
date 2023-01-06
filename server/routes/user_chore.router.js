@@ -21,6 +21,25 @@ router.put('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
+// returns list of all chores for a logged in user
+router.get('/', rejectUnauthenticated, (req, res) => {
+  console.log('user id', req.user.id);
+  const queryText = `
+  SELECT user_chore.id AS id, user_chore.is_active, user_chore.chore_id, chore.description FROM user_chore
+  JOIN chore ON chore.id = user_chore.chore_id
+  WHERE "user_id" = ($1)
+  ORDER BY id;
+  `;
+  const queryValues = [req.user.id]
+  pool
+  .query(queryText, queryValues)
+  .then(result => res.send(result.rows))
+  .catch(err => {
+      console.log('Error making get request for chores', err);
+      res.sendStatus(500);
+  })
+});
+
   
   
 // add a chore instance for a user
@@ -40,11 +59,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
       })
   });
 
-// mark a chore as complete
+// mark a chore as incomplete
 router.put('/', rejectUnauthenticated, (req, res) => {
     const queryText = `
     UPDATE user_chore
-    SET "is_active" = 'false'
+    SET "is_active" = 'true'
     WHERE "id" = ($1);
     `;
     const queryValue = [req.body.chore_id]
@@ -55,6 +74,23 @@ router.put('/', rejectUnauthenticated, (req, res) => {
             console.log('Error updating chore', err);
             res.sendStatus(500)
         })
+})
+
+// mark a chore's completeness 
+router.put('/toggle', rejectUnauthenticated, (req, res) => {
+  const queryText = `
+  UPDATE user_chore
+  SET "is_active" = NOT "is_active"
+  WHERE "id" = ($1);
+  `;
+  const queryValue = [req.body.userChoreId]
+  pool
+      .query(queryText, queryValue)
+      .then(result => res.sendStatus(200))
+      .catch(err => {
+          console.log('Error updating chore', err);
+          res.sendStatus(500)
+      })
 })
 
 // Delete chore instance
