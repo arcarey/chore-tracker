@@ -49,24 +49,24 @@
         [√] add child (this is an important new login function)
         [√] add child saga
         [√] add new user store
-        [ ] render list of children for each family in it's own component under the add new child page
-        [ ] add name column to user table so each child can be displayed by name
+        [√] render list of children for each family in it's own component under the add new child page
+        [√] add name column to user table so each child can be displayed by name
 
 
 PRIORITY LIST:    
-    ASSIGN/UNASSIGN TASKS TO CHILD
-    READ WHETHER TASKS ARE ASSIGNED TO CHILD
-        LOCAL STATE FOR SWITCH POSITION
-        SWITCH ADDS AND REMOVES TASK FROM CHILD TASK LIST
+   [√] ASSIGN/UNASSIGN TASKS TO CHILD
+   [√] READ WHETHER TASKS ARE ASSIGNED TO CHILD
+   [√] LOCAL STATE FOR SWITCH POSITION
+   [√]   SWITCH ADDS AND REMOVES TASK FROM CHILD TASK LIST
 
         
-    LOGIN AS CHILD TO SEE TASK LIST
-    MARK TASKS AS COMPLETE
-        DEACTIVATE TASK
+   [√] LOGIN AS CHILD TO SEE TASK LIST
+   [√] MARK TASKS AS COMPLETE
+   [√]     DEACTIVATE TASK
         CAN BE REACTIVATED BY PARENT???
         CAN BE REACTIVATED BY SCHEDULER program
 
-    COMPLETE TASK LIST PER CHILD
+     COMPLETE TASK LIST PER CHILD
     COMPLETE TASK LIST VIEW FOR PARENT
     COMPLETE TASK LIST VIEW FOR EACH CHILD
 
@@ -76,6 +76,8 @@ PRIORITY LIST:
 
 
     AFTER FULL CRUD DEMO
+    ONCE A CHILD HAS COMPLETED A CHORE, IT CANNOT BE REMOVED FROM THEIR PROFILE WITHOUT DELETING THE ENTIRE CHORE HISTORY...
+
     conditional render of delete button on child list
     CLEARING INPUTS
     ROUTING/NAV
@@ -91,4 +93,13 @@ PRIORITY LIST:
     [ ] PUT profile pic URL (Stretch)
 
 
+Walkthrough for MVP:
+register user
+login as admin
+http://localhost:3000/#/addchild
+click a child to go to the child page
 
+http://localhost:3000/#/addchore
+
+
+login as child user

@@ -76,11 +76,12 @@ function App() {
             exact
             path="/login"
           >
-            {user.id ?
+            {user.id && user.is_parent ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/user" />
-              :
+              <Redirect to="/addchild" />
+              : user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
               // Otherwise, show the login page
               <LoginPage />
             }
@@ -90,11 +91,12 @@ function App() {
             exact
             path="/registration"
           >
-            {user.id ?
+            {user.id && user.is_parent ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
+              // redirect to the /user page
+              <Redirect to="/addchild" />
+              : user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
               // Otherwise, show the registration page
               <RegisterPage />
             }
@@ -104,12 +106,13 @@ function App() {
             exact
             path="/home"
           >
-            {user.id ?
+              {user.id && user.is_parent ?
               // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
-              :
-              // Otherwise, show the Landing page
+              // redirect to the /user page
+              <Redirect to="/addchild" />
+              : user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
+              // Otherwise, show the login page
               <LandingPage />
             }
           </Route>
