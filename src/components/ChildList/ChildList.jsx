@@ -7,8 +7,9 @@ import IconButton from '@mui/material/IconButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Divider from '@mui/material/Divider'
 
-export default function ChildList() {
+export default function ChildList(props) {
     const dispatch = useDispatch();
     
     let children = useSelector(store => store.children)
@@ -24,23 +25,44 @@ export default function ChildList() {
 
     const history = useHistory()
 
-  return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-      {children.map((value) => (
-        <ListItem
-          onClick={() => history.push(`/child/assign/${value.id}`)}  
-          key={value.id}
-            secondaryAction={
-            <IconButton 
-                onClick={() => deleteItem(value.id)}
-                aria-label="delete">
-              <DeleteIcon />
-            </IconButton>
-          }
-        >
-          <ListItemText primary={`${value.nickname}`} />
-        </ListItem>
-      ))}
-    </List>
-  );
+    if (props.showDelete){
+      return (
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          <Divider></Divider>
+          {children.map((value) => (
+            <ListItem
+              button
+              divider
+              onClick={() => history.push(`/child/assign/${value.id}`)}  
+              key={value.id}
+                secondaryAction={
+                <IconButton 
+                    onClick={() => deleteItem(value.id)}
+                    aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+              }
+            >
+              <ListItemText primary={`${value.nickname}`} />
+            </ListItem>
+          ))}
+        </List>
+      );    
+    }
+    return (
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <Divider></Divider>
+        {children.map((value) => (
+          <ListItem
+            button
+            divider
+            onClick={() => history.push(`/child/assign/${value.id}`)}  
+            key={value.id}
+          >
+            <ListItemText primary={`${value.nickname}`} />
+          </ListItem>
+        ))}
+      </List>
+    );
+  
 }

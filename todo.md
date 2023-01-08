@@ -91,15 +91,3 @@ PRIORITY LIST:
 
 
     [ ] PUT profile pic URL (Stretch)
-
-
-Walkthrough for MVP:
-register user
-login as admin
-http://localhost:3000/#/addchild
-click a child to go to the child page
-
-http://localhost:3000/#/addchore
-
-
-login as child user

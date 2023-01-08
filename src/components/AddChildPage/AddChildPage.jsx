@@ -85,7 +85,7 @@ export default function addChild() {
             </Button>
             <Grid container></Grid>
           </Box>
-          <ChildList/>
+          <ChildList showDelete/>
         </Box>
       </Container>
   );
