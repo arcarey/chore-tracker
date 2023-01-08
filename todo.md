@@ -63,10 +63,9 @@ PRIORITY LIST:
    [√] LOGIN AS CHILD TO SEE TASK LIST
    [√] MARK TASKS AS COMPLETE
    [√]     DEACTIVATE TASK
-        CAN BE REACTIVATED BY PARENT???
         CAN BE REACTIVATED BY SCHEDULER program
 
-     COMPLETE TASK LIST PER CHILD
+    
     COMPLETE TASK LIST VIEW FOR PARENT
     COMPLETE TASK LIST VIEW FOR EACH CHILD
 
@@ -74,8 +73,24 @@ PRIORITY LIST:
         some kind of tag on child detail page
 
     HIDE COPYRIGHT UNDER NAV BAR THAT CAN BE SCROLLED TO
-    
+
         
+
+## PAGES YET TO BUILD
+[ ] Login
+[ ] Register
+[ ] Complete Chore List (un-complete a chore as a parent/admin)
+[ ] Modal for assigning recurrence
+[ ] Info Page
+
+## OTHER MAJOR FUNCTIONALITY
+[ ] Cron
+
+## OTHER MAJOR STYLING
+[ ] New Theme colors
+[ ] App Specific design (maybe background on login or something???)
+
+
 
 
     AFTER FULL CRUD DEMO
@@ -85,6 +100,10 @@ PRIORITY LIST:
     CLEARING INPUTS
     ROUTING/NAV
     MUI header and themes (conditional theme for kids and adults??? probably not...)
+
+
+
+
 
 
     ADD GOAL/GOAL PROGRESS

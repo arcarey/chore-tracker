@@ -37,10 +37,12 @@ router.get('/family', rejectUnauthenticated, (req, res) => {
     })
   });
 
+  // delete a child user
   router.delete(`/family_list/:id`, rejectUnauthenticated,(req, res) => {
     const queryText = `
     DELETE from "user"
-    WHERE id = $1;
+    WHERE id = $1
+    ;
     `;
     const queryValue = [req.params.id];
     pool

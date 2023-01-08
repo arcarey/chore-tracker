@@ -21,7 +21,9 @@ export default function ChildList(props) {
         dispatch(action);
       }, []);
 
-    const deleteItem = (id) => dispatch({ type: 'DELETE_CHILD', payload: {id: id}})
+    const deleteItem = (id) => {
+      dispatch({ type: 'DELETE_CHILD', payload: {id: id}})
+    }
 
     const history = useHistory()
 
@@ -31,14 +33,16 @@ export default function ChildList(props) {
           <Divider></Divider>
           {children.map((value) => (
             <ListItem
-              button
               divider
               onClick={() => history.push(`/child/assign/${value.id}`)}  
               key={value.id}
                 secondaryAction={
                 <IconButton 
-                    onClick={() => deleteItem(value.id)}
-                    aria-label="delete">
+                    onClick={(event) => {
+                      deleteItem(value.id)
+                      event.stopPropagation();
+                    }}
+                    aria-label="delete" >
                   <DeleteIcon />
                 </IconButton>
               }
@@ -54,7 +58,6 @@ export default function ChildList(props) {
         <Divider></Divider>
         {children.map((value) => (
           <ListItem
-            button
             divider
             onClick={() => history.push(`/child/assign/${value.id}`)}  
             key={value.id}

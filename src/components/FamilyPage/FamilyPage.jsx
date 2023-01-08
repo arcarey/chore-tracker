@@ -43,14 +43,14 @@ export default function addChild() {
                 sx={{padding: 2, margin: 2}}
                 onClick={() => history.push('/addchore')}
             >
-                Add Chores
+                Chores
             </Button>
             <Button
                 variant="contained"
                 sx={{padding: 2, margin: 2}}
                 onClick={() => history.push('/addchild')}
             >
-                Add Children
+                Children
             </Button>
 
           </Box>
