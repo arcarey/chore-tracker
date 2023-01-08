@@ -27,7 +27,7 @@ export default function ChildList(props) {
 
     if (props.showDelete){
       return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', marginTop: '40px' }}>
           <Divider></Divider>
           {children.map((value) => (
             <ListItem
@@ -50,7 +50,7 @@ export default function ChildList(props) {
       );    
     }
     return (
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', position: 'fixed', bottom: 90}}>
         <Divider></Divider>
         {children.map((value) => (
           <ListItem

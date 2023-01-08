@@ -30,11 +30,21 @@ function* deleteChild(action){
     }
 }
 
+function* fetchFamily(action){
+    try {
+        const familyName = yield axios.get('/api/family/family');
+        yield put({type: 'SET_FAMILY_NAME', payload: familyName.data})
+    } catch (error) {
+        console.log('Error retrieving family name', err);
+    }
+}
+
 
 
 function* choreSaga(){
     
     yield takeLatest('FETCH_CHILDREN', fetchChildren);
+    yield takeLatest('FETCH_FAMILY', fetchFamily)
     yield takeLatest('DELETE_CHILD', deleteChild);
     yield takeLatest('GET_CURRENT_CHILD', fetchCurrentChild)
 

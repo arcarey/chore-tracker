@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-// GET by User ID
+// GET by family ID
 router.get('/family', rejectUnauthenticated, (req, res) => {
     const queryText = `
     SELECT * FROM family

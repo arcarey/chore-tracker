@@ -72,6 +72,9 @@ PRIORITY LIST:
 
     TASK RECURRENCE SETUP
         some kind of tag on child detail page
+
+    HIDE COPYRIGHT UNDER NAV BAR THAT CAN BE SCROLLED TO
+    
         
 
 

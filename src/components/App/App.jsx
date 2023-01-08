@@ -8,19 +8,20 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+import TopNav from '../TopNav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddChildPage from '../AddChildPage/AddChildPage';
 import AddChorePage from '../AddChorePage/AddChorePage';
 import AssignChorePage from '../AssignChorePage/AssignChorePage';
+import FamilyPage from '../FamilyPage/FamilyPage';
+import BottomNav from '../BottomNav/BottomNav';
 
 import './App.css';
 import ChildChorePage from '../ChildChorePage/ChildChorePage';
@@ -37,7 +38,7 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
+        <TopNav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />
@@ -147,7 +148,7 @@ function App() {
             exact
             path="/family"
           >
-            
+            <FamilyPage />
           </ProtectedRoute>
 
 
@@ -156,7 +157,11 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+
+        {/* Should only show bottom nav if logged in */}
+        {user.id && <BottomNav/>}
+        
+        {/* <Footer /> */}
       </div>
     </Router>
   );
