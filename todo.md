@@ -85,6 +85,8 @@ PRIORITY LIST:
 
 ## OTHER MAJOR FUNCTIONALITY
 [ ] Cron
+    [ ] schedule and test Cron schedule
+    [ ] write program to check whole user_chore and reactivate the stuff it should
 [ ] Add and remove chores from a child while keeping the completed chore log
 [ ] Make child detail page a tray modal... for the back button to work
 [ ] Make the child list a tray menu
@@ -93,6 +95,7 @@ PRIORITY LIST:
 ## OTHER MAJOR STYLING
 [ ] New Theme colors
 [ ] App Specific design (maybe background on login or something???)
+[ ] Add the .env file
 
 
 
