@@ -45,6 +45,7 @@ function LoginForm() {
                 id="userName"
                 label="Username"
                 name="username"
+                type="username"
                 autoComplete="username"
                 value={username}
                 onChange={(event) => setUsername(event.target.value)}
@@ -57,6 +58,7 @@ function LoginForm() {
                 id="password"
                 label="Password"
                 name="password"
+                type="password"
                 autoComplete="password"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}

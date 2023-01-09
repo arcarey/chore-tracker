@@ -73,7 +73,7 @@ function App() {
             {user.id && user.is_parent ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/addchild" />
+              <Redirect to="/home" />
               : user.id && !user.is_parent ?
                 <Redirect to="/chores" /> :
               // Otherwise, show the login page
@@ -88,7 +88,7 @@ function App() {
             {user.id && user.is_parent ?
               // If the user is already logged in, 
               // redirect to the /user page
-              <Redirect to="/addchild" />
+              <Redirect to="/home" />
               : user.id && !user.is_parent ?
                 <Redirect to="/chores" /> :
               // Otherwise, show the registration page
