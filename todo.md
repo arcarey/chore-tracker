@@ -77,14 +77,18 @@ PRIORITY LIST:
         
 
 ## PAGES YET TO BUILD
-[ ] Login
-[ ] Register
-[ ] Complete Chore List (un-complete a chore as a parent/admin)
+[√] Login
+[√] Register
+[ ] Completed Chore List (un-complete a chore as a parent/admin)
 [ ] Modal for assigning recurrence
 [ ] Info Page
 
 ## OTHER MAJOR FUNCTIONALITY
 [ ] Cron
+[ ] Add and remove chores from a child while keeping the completed chore log
+[ ] Make child detail page a tray modal... for the back button to work
+[ ] Make the child list a tray menu
+[ ] UR sure dialogues on delete
 
 ## OTHER MAJOR STYLING
 [ ] New Theme colors

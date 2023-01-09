@@ -31,7 +31,9 @@ function LoginForm() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box component="form" onSubmit={login}>
+        <center>
         <Typography variant="h5">Login</Typography>
+        </center>
         <Divider sx={{mt: 1, mb:2}}/>
         {errors.loginMessage && (
           <h3 className="alert" role="alert">

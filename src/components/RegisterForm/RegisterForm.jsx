@@ -29,7 +29,9 @@ function RegisterForm() {
     <Container component="main" maxWidth="xs">
     <CssBaseline />
     <Box component="form" onSubmit={registerUser}>
-      <Typography variant="h5">Register Family</Typography>
+      <center>
+        <Typography variant="h5">Register Family</Typography>
+      </center>
       <Divider sx={{mt: 1, mb:2}}/>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
