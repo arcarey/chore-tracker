@@ -72,7 +72,6 @@ return (
                             choreId={chore.id}
                             currentChildId={currentChildId}
                             disabled={userChores.map(userChore => userChore.chore_id).indexOf(chore.id) === -1}
-                            // userChores={userChores}
                             />
                         <Switch
                             edge="end"

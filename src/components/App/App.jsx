@@ -116,7 +116,11 @@ function App() {
             exact
             path="/addchild"
           >
-            <AddChildPage />
+            {user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
+              // Otherwise, show the login page
+              
+            <AddChildPage />}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -124,7 +128,11 @@ function App() {
             exact
             path="/addchore"
           >
-            <AddChorePage />
+            {user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
+              // Otherwise, show the login page
+              
+            <AddChorePage />}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -132,7 +140,11 @@ function App() {
             exact
             path="/child/assign/:id"
           >
-            <AssignChorePage />
+            {user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
+              // Otherwise, show the login page
+              
+            <AssignChorePage />}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -140,7 +152,9 @@ function App() {
             exact
             path="/chores"
           >
-            <ChildChorePage />
+            {user.id && user.is_parent ?
+            <Redirect to ="/home" /> :
+            <ChildChorePage />}
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -148,7 +162,11 @@ function App() {
             exact
             path="/family"
           >
-            <FamilyPage />
+            {user.id && !user.is_parent ?
+                <Redirect to="/chores" /> :
+              // Otherwise, show the login page
+              
+            <FamilyPage />}
           </ProtectedRoute>
 
 

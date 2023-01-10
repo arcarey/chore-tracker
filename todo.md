@@ -1,7 +1,7 @@
 ### Build List
 
 ## Back End
-[ ] CRUD LIST FOR BE
+[√] CRUD LIST FOR BE
     [√] USER router
        [√] POST non-parent user with family name/id (this will have to be handled asyc on the FE in the login saga)
        [√] POST parent user with family name/id (this will also be handled on the FE with the login saga)     
@@ -31,19 +31,19 @@
         [√] Delete completed chore
         [√] GET by user_id
     [ ] PUT chore as active on interval (cron) make it's own file (next week)
-    [ ] build Nav routing to 8 views
-    [ ] build login
+    [√] build Nav routing to 8 views
+    [√] build login
     [√] build register 
             [√] register new user
             [√] then hit a register new family page
-    [ ] build nav bar component
+    [√] build nav bar component
     [√] build logout component
     [ ] child task page
-        [ ] child user card component
+        [√] child user card component
             [ ] progress component 
-        [ ] task component
-            [ ] delete btn
-            [ ] assign btn
+        [√] task component
+            [√] delete btn
+            [√] assign btn
     [√] add chore
     [√] return array of chores
         [√] add child (this is an important new login function)
@@ -80,33 +80,29 @@ PRIORITY LIST:
 [√] Login
 [√] Register
 [ ] Completed Chore List (un-complete a chore as a parent/admin)
-[ ] Modal for assigning recurrence
+[√] Modal for assigning recurrence
 [ ] Info Page
 
 ## OTHER MAJOR FUNCTIONALITY
 [ ] Cron
-    [ ] schedule and test Cron schedule
+    [√] schedule and test Cron schedule
     [ ] write program to check whole user_chore and reactivate the stuff it should
 [ ] Add and remove chores from a child while keeping the completed chore log
-[ ] Make child detail page a tray modal... for the back button to work
-[ ] Make the child list a tray menu
+[ ] Make child detail a MUI swipeable drawer 
+[ ] make sure the back button starts to work
+
 [ ] UR sure dialogues on delete
 
 ## OTHER MAJOR STYLING
 [ ] New Theme colors
 [ ] App Specific design (maybe background on login or something???)
-[ ] Add the .env file
+[√] Add the .env file
 
 
 
 
-    AFTER FULL CRUD DEMO
-    ONCE A CHILD HAS COMPLETED A CHORE, IT CANNOT BE REMOVED FROM THEIR PROFILE WITHOUT DELETING THE ENTIRE CHORE HISTORY...
-
-    conditional render of delete button on child list
+   
     CLEARING INPUTS
-    ROUTING/NAV
-    MUI header and themes (conditional theme for kids and adults??? probably not...)
 
 
 

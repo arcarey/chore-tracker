@@ -49,7 +49,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     INSERT INTO user_chore ("user_id", "chore_id", "recurrence")
     VALUES ($1, $2, $3);
     `;
-    const queryValues = [req.body.userId, req.body.choreId, req.body.recurrence]
+    const queryValues = [req.body.userId, req.body.choreId, '']
     pool
       .query(queryText, queryValues)
       .then(result => res.sendStatus(201))
@@ -95,7 +95,6 @@ router.put('/toggle', rejectUnauthenticated, (req, res) => {
 
 // Delete chore instance
 router.put('/delete/', rejectUnauthenticated, (req, res) => {
-    console.log('del req body', req.body);
     const queryText = `
     DELETE FROM user_chore
     WHERE "user_id" = ($1) AND "chore_id" = ($2);  
@@ -111,6 +110,24 @@ router.put('/delete/', rejectUnauthenticated, (req, res) => {
   })
   
   
+router.put('/recurrence/', rejectUnauthenticated, (req, res) => {
+  // console.log(setRecurringToDayName(req.body.recurring));
+  const queryText = `
+  UPDATE user_chore
+  SET recurrence = $1
+  WHERE user_id = $2 AND chore_id = $3;
+  `;
+  const queryValues = [req.body.recurring, req.body.userId, req.body.choreId]
+  console.log('query values:', queryValues);
+  pool
+    .query(queryText, queryValues)
+    .then(result => res.sendStatus(200))
+    .catch(err => {
+      console.log(('error updating recurrence', err));
+      res.sendStatus(500);
+    })
+})
+
 
 
 

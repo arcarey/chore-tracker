@@ -3,7 +3,6 @@ import axios from 'axios';
 
 // worker Saga: will be fired on "ADD_CHORE" actions
 function* addUserChore(action){
-    console.log(action.payload);
     try {
         yield axios.post('/api/user_chore', action.payload);
         yield put({ type: 'FETCH_USER_CHORES', payload: action.payload.userId})
@@ -15,9 +14,7 @@ function* addUserChore(action){
 
 function* fetchUserChores(action){
     try {
-        console.log(action.payload);
         const userChores = yield axios.put(`/api/user_chore`, {id: action.payload});
-        console.log('user chores:', userChores.data);
         yield put({ type: 'SET_USER_CHORES', payload: userChores.data})
     } catch (err) {
         console.log('Error fetching user chore list', err);
@@ -27,7 +24,6 @@ function* fetchUserChores(action){
 function* fetchLoggedInUserChores(action){
     try {
         const userChores = yield axios.get(`/api/user_chore`);
-        console.log('user chores:', userChores.data);
         yield put({ type: 'SET_USER_CHORES', payload: userChores.data})
     } catch (err) {
         console.log('Error fetching user chore list', err);
@@ -52,6 +48,15 @@ function* toggleIsActive(action){
     }
 }
 
+function* putRecurrence(action){
+    try {
+        yield axios.put('/api/user_chore/recurrence', action.payload);
+        yield put({type: 'FETCH_USER_CHORES', payload: action.payload.userId});
+    } catch (error) {
+        console.log('Error setting recurrence', error);
+    }
+}
+
 
 function* userChoreSaga(){
     yield takeLatest('ADD_USER_CHORE', addUserChore);
@@ -59,6 +64,7 @@ function* userChoreSaga(){
     yield takeLatest('DELETE_USER_CHORE', deleteChore);
     yield takeLatest('FETCH_LOGGED_IN_USER_CHORES', fetchLoggedInUserChores);
     yield takeLatest('TOGGLE_IS_ACTIVE', toggleIsActive)
+    yield takeLatest('PUT_RECURRENCE', putRecurrence)
 }
 
 export default userChoreSaga;
