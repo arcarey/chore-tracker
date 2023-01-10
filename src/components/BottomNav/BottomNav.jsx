@@ -11,7 +11,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-export default function BottomNav() {
+export default function BottomNav(props) {
 
     const history = useHistory();
 

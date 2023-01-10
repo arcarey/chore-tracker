@@ -13,7 +13,6 @@ export default function ChildList(props) {
     const dispatch = useDispatch();
     
     let children = useSelector(store => store.children)
-    console.log(children);
 
     useEffect(() => {
         console.log('in useEffect');

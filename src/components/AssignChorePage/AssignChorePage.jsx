@@ -10,6 +10,7 @@ import { Container } from '@mui/system';
 import Divider from '@mui/material/Divider';
 import { CssBaseline, Box, Typography } from '@mui/material';
 import ChildList from '../ChildList/ChildList';
+import RecurDropdown from '../RecurDropdown/RecurDropdown'
 
 export default function ChoreList() {
     const dispatch = useDispatch();
@@ -19,7 +20,10 @@ export default function ChoreList() {
     let userChores = useSelector(store => store.userChores)
 
     let currentChildId = useParams().id
-    console.log('current child id', currentChildId);
+
+
+    
+
 
     // we can use the params in the URL to know what child we are looking at
 
@@ -32,12 +36,17 @@ export default function ChoreList() {
     
     // toggles the task as assigned or unassigned to a person
     const handleToggle = (choreId) => {
+        
         if (userChores.map(userChore => userChore.chore_id).indexOf(choreId) !== -1){
             dispatch({type: 'DELETE_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
         } else{
             dispatch({type: 'ADD_USER_CHORE', payload: {choreId: choreId, userId: currentChild.id}})
         }
     }
+
+
+
+
 
 return (
     <Container component="main" maxWidth="xs">
@@ -58,11 +67,19 @@ return (
                 <ListItem
                 key={chore.id}
                     secondaryAction={
-                    <Switch
-                        edge="end"
-                        onChange={() => handleToggle(chore.id)}
-                        checked={userChores.map(userChore => userChore.chore_id).indexOf(chore.id) !== -1}
-                    />
+                    <Box sx={{display: "inline-flex", flexDirection: "row"}}>
+                        <RecurDropdown
+                            choreId={chore.id}
+                            currentChildId={currentChildId}
+                            disabled={userChores.map(userChore => userChore.chore_id).indexOf(chore.id) === -1}
+                            // userChores={userChores}
+                            />
+                        <Switch
+                            edge="end"
+                            onChange={() => handleToggle(chore.id)}
+                            checked={userChores.map(userChore => userChore.chore_id).indexOf(chore.id) !== -1}
+                        />
+                    </Box>
                 }
                 >
                 <ListItemText primary={`${chore.description}`} />
