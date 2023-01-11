@@ -24,7 +24,7 @@ export default function BottomNav(props) {
             >
             <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={ () => history.push('/home')}/>
             <BottomNavigationAction label="Info" icon={<InfoIcon />} onClick={() => history.push('/home')}/>
-            <BottomNavigationAction label="Complete" icon={<GradingIcon />} onClick={() => history.push('/home')}/>
+            <BottomNavigationAction label="Complete" icon={<GradingIcon />} onClick={() => history.push('/complete')}/>
             <BottomNavigationAction label="Back" icon={<UndoIcon />} onClick={() => history.goBack()}/>
             </BottomNavigation>
         </Box>

@@ -22,6 +22,7 @@ import AddChorePage from '../AddChorePage/AddChorePage';
 import AssignChorePage from '../AssignChorePage/AssignChorePage';
 import FamilyPage from '../FamilyPage/FamilyPage';
 import BottomNav from '../BottomNav/BottomNav';
+import CompletedChorePage from '../CompletedChorePage/CompletedChorePage';
 
 import './App.css';
 import ChildChorePage from '../ChildChorePage/ChildChorePage';
@@ -169,6 +170,14 @@ function App() {
             <FamilyPage />}
           </ProtectedRoute>
 
+          <ProtectedRoute
+            // landing family page for the parent
+            exact
+            path="/complete"
+          >
+              
+            <CompletedChorePage />
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

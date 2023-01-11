@@ -30,7 +30,7 @@
         [√] POST completed chore
         [√] Delete completed chore
         [√] GET by user_id
-    [ ] PUT chore as active on interval (cron) make it's own file (next week)
+    [√] PUT chore as active on interval (cron) make it's own file (next week)
     [√] build Nav routing to 8 views
     [√] build login
     [√] build register 
@@ -84,10 +84,10 @@ PRIORITY LIST:
 [ ] Info Page
 
 ## OTHER MAJOR FUNCTIONALITY
-[ ] Cron
+[√] Cron
     [√] schedule and test Cron schedule
-    [ ] write program to check whole user_chore and reactivate the stuff it should
-[ ] Add and remove chores from a child while keeping the completed chore log
+    [√] write program to check whole user_chore and reactivate the stuff it should
+[√] Add and remove chores from a child while keeping the completed chore log
 [ ] Make child detail a MUI swipeable drawer 
 [ ] make sure the back button starts to work
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Divider, Typography, TextField, Button, Container } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useHistory } from 'react-router-dom';
+
 
 
 function RegisterForm() {
@@ -10,6 +12,7 @@ function RegisterForm() {
   const [familyName, setFamilyName] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -23,6 +26,7 @@ function RegisterForm() {
         isParent: 'true'
       },
     });
+    history.push('/home')
   }; // end registerUser
 
   return (

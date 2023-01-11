@@ -1,8 +1,10 @@
 import { Box, Divider, Typography, TextField, Button, Container } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import CssBaseline from '@mui/material/CssBaseline';
+import { useHistory } from 'react-router-dom';
+
 
 
 function LoginForm() {
@@ -10,6 +12,7 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const login = (event) => {
     event.preventDefault();
@@ -22,6 +25,7 @@ function LoginForm() {
           password: password,
         },
       });
+      history.push('/home')
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
