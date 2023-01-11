@@ -57,7 +57,7 @@ export default function ChildList(props) {
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', position: 'fixed', bottom: 90}}>
         <Divider></Divider>
         {children.map((value) => (
-          <ListItem disablePadding >
+          <ListItem disablePadding key={value.id}>
             <ListItemButton
               divider
               onClick={() => history.push(`/child/assign/${value.id}`)}  

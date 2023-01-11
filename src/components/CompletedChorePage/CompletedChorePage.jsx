@@ -45,7 +45,7 @@ export default function addChild() {
           </Typography>
 
           {user?.is_parent && <FamilyCompletedChoreList/>}
-          {/* {!user?.is_parent && <UserCompletedChoreList/>} */}
+          {!user?.is_parent && <UserCompletedChoreList/>}
 
 
 

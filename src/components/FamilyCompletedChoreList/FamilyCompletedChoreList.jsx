@@ -34,8 +34,8 @@ export default function DataTable() {
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={6}
-        rowsPerPageOptions={[6]}
+        pageSize={20}
+        rowsPerPageOptions={[20]}
       />
     </div>
   );
