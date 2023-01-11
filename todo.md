@@ -97,6 +97,10 @@ PRIORITY LIST:
 [ ] New Theme colors
 [ ] App Specific design (maybe background on login or something???)
 [√] Add the .env file
+[ ] child list needs to feel like buttons
+[ ] family landing page add chore
+
+
 
 
 
@@ -116,3 +120,10 @@ PRIORITY LIST:
 
 
     [ ] PUT profile pic URL (Stretch)
+    [ ] date range for completed chores, or cleanup of old chores in database
+
+Rework the navigation of the app
+    login -> see the chore list for kid
+    replace info with edit family button
+    Parent overview of what your kids have done right now (landing page)
+

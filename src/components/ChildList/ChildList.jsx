@@ -1,6 +1,7 @@
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
@@ -56,12 +57,14 @@ export default function ChildList(props) {
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', position: 'fixed', bottom: 90}}>
         <Divider></Divider>
         {children.map((value) => (
-          <ListItem
-            divider
-            onClick={() => history.push(`/child/assign/${value.id}`)}  
-            key={value.id}
-          >
-            <ListItemText primary={`${value.nickname}`} />
+          <ListItem disablePadding >
+            <ListItemButton
+              divider
+              onClick={() => history.push(`/child/assign/${value.id}`)}  
+              key={value.id}
+            >
+              <ListItemText primary={`${value.nickname}`} />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
