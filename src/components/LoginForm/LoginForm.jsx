@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import { Box, Divider, Typography, TextField, Button, Container } from '@mui/material';
+import React, { useState, } from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import CssBaseline from '@mui/material/CssBaseline';
+import { useHistory } from 'react-router-dom';
+
+
 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory()
 
   const login = (event) => {
     event.preventDefault();
@@ -19,47 +25,60 @@ function LoginForm() {
           password: password,
         },
       });
+      history.push('/home')
     } else {
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
-      {errors.loginMessage && (
-        <h3 className="alert" role="alert">
-          {errors.loginMessage}
-        </h3>
-      )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
-      </div>
-    </form>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <Box component="form" onSubmit={login}>
+        <center>
+        <Typography variant="h5">Login</Typography>
+        </center>
+        <Divider sx={{mt: 1, mb:2}}/>
+        {errors.loginMessage && (
+          <h3 className="alert" role="alert">
+            {errors.loginMessage}
+          </h3>
+        )}
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="userName"
+                label="Username"
+                name="username"
+                type="username"
+                autoComplete="username"
+                value={username}
+                onChange={(event) => setUsername(event.target.value)}
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="password"
+                label="Password"
+                name="password"
+                type="password"
+                autoComplete="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
+          <Button
+            type="login"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Login
+          </Button>
+    </Box>
+    </Container>
   );
 }
 

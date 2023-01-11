@@ -6,15 +6,18 @@ const router = express.Router();
 // add new completed chore
 router.post('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  INSERT INTO completed_chore ("user_chore_id", "time_completed")
-	VALUES ($1, now());
+  INSERT INTO completed_chore ("user_chore_id", "time_completed", "description", "user_id", "family_id")
+	VALUES ($1, now(), (SELECT chore.description 
+                      FROM user_chore
+                      JOIN chore ON chore.id = user_chore.chore_id
+                      WHERE user_chore.id = ${req.body.userChoreId} ), ${req.user.id}, ${req.user.family_id});
   `;
-  const queryValues = [req.body.user_chore_id]
+  const queryValues = [req.body.userChoreId]
   pool
     .query(queryText, queryValues)
     .then(result => res.sendStatus(201))
     .catch(err => {
-      console.log('Error adding completed chore');
+      console.log('Error adding completed chore', err);
       res.sendStatus(500);      
     })
 });
@@ -23,10 +26,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // GET by User ID
 router.get('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  SELECT * FROM completed_chore
-  WHERE "user_id" = ($1);
+  SELECT completed_chore.*, "user".nickname FROM completed_chore
+  JOIN "user" ON completed_chore.user_id = "user".id
+  WHERE completed_chore."family_id" = ($1);
   `;
-  const queryValues = [req.body.user_id]
+  const queryValues = [req.user.family_id]
   pool
   .query(queryText, queryValues)
   .then(result => res.send(result.rows))
@@ -37,13 +41,20 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 
+
+
+// DELETE by user_chore_id
 // DELETE by id
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
   DELETE FROM completed_chore
-  WHERE "user_id" = ($1);  
+  WHERE id = (SELECT id FROM completed_chore 
+    WHERE user_chore_id = ($1)
+    ORDER BY time_completed DESC
+    LIMIT '1');
   `;
-  const queryValue = [req.body.user_id]
+  const queryValue = [req.params.id]
+    console.log('queryValue',queryValue);
   pool
     .query(queryText, queryValue)
     .then(result => res.sendStatus(200))

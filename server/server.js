@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const scheduler = require('./modules/cron-scheduler');
 
 const app = express();
 
@@ -18,6 +19,9 @@ const userChoreRouter = require('./routes/user_chore.router');
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Cron scheduler middleware
+scheduler();
 
 // Passport Session Configuration //
 app.use(sessionMiddleware);

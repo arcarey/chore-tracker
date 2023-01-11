@@ -39,12 +39,12 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 
 
 // deletes a chore based on it's chore ID
-router.delete('/', rejectUnauthenticated, (req, res) => {
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
   const queryText = `
   DELETE FROM chore
   WHERE "id" = ($1);  
   `;
-  const queryValue = [req.body.id]
+  const queryValue = [req.params.id]
   pool
     .query(queryText, queryValue)
     .then(result => res.sendStatus(200))

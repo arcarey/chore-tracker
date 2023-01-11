@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Divider, Typography, TextField, Button, Container } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
+import { useHistory } from 'react-router-dom';
+
+
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -7,6 +12,7 @@ function RegisterForm() {
   const [familyName, setFamilyName] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -17,60 +23,73 @@ function RegisterForm() {
         username: username,
         password: password,
         familyName: familyName,
-        isParent: 'false'
+        isParent: 'true'
       },
     });
+    history.push('/home')
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+    <Container component="main" maxWidth="xs">
+    <CssBaseline />
+    <Box component="form" onSubmit={registerUser}>
+      <center>
+        <Typography variant="h5">Register Family</Typography>
+      </center>
+      <Divider sx={{mt: 1, mb:2}}/>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
         </h3>
       )}
-      <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={username}
-            required
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={password}
-            required
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
-        <label htmlFor="familyName">
-          Family Name:
-          <input
-            type="text"
-            name="familyName"
-            value={familyName}
-            required
-            onChange={(event) => setFamilyName(event.target.value)}
-          />
-        </label>
-      </div>
+          <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="userName"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              type="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="password"
+              label="Password"
+              name="password"
+              autoComplete="password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="familyName"
+              label="Family Name"
+              name="familyName"
+              autoComplete="familyName"
+              value={familyName}
+              onChange={(event) => setFamilyName(event.target.value)}
+            />
 
-      <div>
-        <input className="btn" type="submit" name="submit" value="Register" />
-      </div>
-    </form>
+        <Button
+          type="register"
+          fullWidth
+          variant="contained"
+          sx={{ mt: 3, mb: 2 }}
+        >
+          Register
+        </Button>
+  </Box>
+  </Container>
+
   );
 }
 

@@ -28,8 +28,19 @@ function* registerUser(action) {
   }
 }
 
+function* registerChild(action){
+  try{
+    yield axios.post('api/user/register_child', action.payload)
+    const children = yield axios.get('api/family/family_list')
+    yield put({ type: 'SET_CHILDREN', payload: children.data})
+  } catch (err){
+    console.log('error fetching child list', err);
+  }
+}
+
 function* registrationSaga() {
   yield takeLatest('REGISTER', registerUser);
+  yield takeLatest('REGISTER_CHILD', registerChild)
 }
 
 export default registrationSaga;

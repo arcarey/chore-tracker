@@ -1,7 +1,7 @@
 ### Build List
 
 ## Back End
-[ ] CRUD LIST FOR BE
+[√] CRUD LIST FOR BE
     [√] USER router
        [√] POST non-parent user with family name/id (this will have to be handled asyc on the FE in the login saga)
        [√] POST parent user with family name/id (this will also be handled on the FE with the login saga)     
@@ -30,29 +30,89 @@
         [√] POST completed chore
         [√] Delete completed chore
         [√] GET by user_id
-    [ ] PUT chore as active on interval (cron) make it's own file (next week)
-    [ ] build Nav routing to 8 views
-    [ ] build login
+    [√] PUT chore as active on interval (cron) make it's own file (next week)
+    [√] build Nav routing to 8 views
+    [√] build login
     [√] build register 
             [√] register new user
             [√] then hit a register new family page
-    [ ] build nav bar component
+    [√] build nav bar component
     [√] build logout component
     [ ] child task page
-        [ ] child user card component
+        [√] child user card component
             [ ] progress component 
-        [ ] task component
-            [ ] delete btn
-            [ ] assign btn
-    [ ] add chore
-    [ ] add child (this is an important new login function)
+        [√] task component
+            [√] delete btn
+            [√] assign btn
+    [√] add chore
+    [√] return array of chores
+        [√] add child (this is an important new login function)
+        [√] add child saga
+        [√] add new user store
+        [√] render list of children for each family in it's own component under the add new child page
+        [√] add name column to user table so each child can be displayed by name
+
+
+PRIORITY LIST:    
+   [√] ASSIGN/UNASSIGN TASKS TO CHILD
+   [√] READ WHETHER TASKS ARE ASSIGNED TO CHILD
+   [√] LOCAL STATE FOR SWITCH POSITION
+   [√]   SWITCH ADDS AND REMOVES TASK FROM CHILD TASK LIST
+
+        
+   [√] LOGIN AS CHILD TO SEE TASK LIST
+   [√] MARK TASKS AS COMPLETE
+   [√]     DEACTIVATE TASK
+        CAN BE REACTIVATED BY SCHEDULER program
+
+    
+    COMPLETE TASK LIST VIEW FOR PARENT
+    COMPLETE TASK LIST VIEW FOR EACH CHILD
+
+    TASK RECURRENCE SETUP
+        some kind of tag on child detail page
+
+    HIDE COPYRIGHT UNDER NAV BAR THAT CAN BE SCROLLED TO
+
+        
+
+## PAGES YET TO BUILD
+[√] Login
+[√] Register
+[ ] Completed Chore List (un-complete a chore as a parent/admin)
+[√] Modal for assigning recurrence
+[ ] Info Page
+
+## OTHER MAJOR FUNCTIONALITY
+[√] Cron
+    [√] schedule and test Cron schedule
+    [√] write program to check whole user_chore and reactivate the stuff it should
+[√] Add and remove chores from a child while keeping the completed chore log
+[ ] Make child detail a MUI swipeable drawer 
+[ ] make sure the back button starts to work
+
+[ ] UR sure dialogues on delete
+
+## OTHER MAJOR STYLING
+[ ] New Theme colors
+[ ] App Specific design (maybe background on login or something???)
+[√] Add the .env file
+
+
+
+
+   
+    CLEARING INPUTS
+
+
+
+
+
+
+    ADD GOAL/GOAL PROGRESS
+    
 
 
 
 
     [ ] PUT profile pic URL (Stretch)
-
-
-
-1-2-22 DO ALL OF THESE TODAY, APPLY FOR 2 JOBS.
-THE FIRST THING I NEED TO DO IS GET LOGGED IN AS A USER THAT INCLUDES THEIR FAMILY ID
