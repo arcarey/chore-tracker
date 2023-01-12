@@ -9,12 +9,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Divider from '@mui/material/Divider'
+import { Typography } from '@mui/material';
+
+
+import ListSubheader from '@mui/material/ListSubheader';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+
 
 export default function ChildList(props) {
     const dispatch = useDispatch();
     
     let children = useSelector(store => store.children)
+    const [open, setOpen] = React.useState(true);
 
+    const handleClick = () => {
+      setOpen(!open);
+    }
     useEffect(() => {
         console.log('in useEffect');
         const action = { type: 'FETCH_CHILDREN' };
@@ -53,11 +65,48 @@ export default function ChildList(props) {
         </List>
       );    
     }
-    return (
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', position: 'fixed', bottom: 90}}>
-        <Divider></Divider>
+    // return (
+    //   <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', position: 'fixed', bottom: 90}}>
+    //     <Divider></Divider>
+    //     {children.map((value) => (
+    //       <ListItem disablePadding key={value.id}
+    //           >
+    //         <ListItemButton
+    //           divider
+    //           onClick={() => history.push(`/child/assign/${value.id}`)}  
+    //           key={value.id}
+    //         >
+    //           <ListItemText primary={`${value.nickname}`} />
+    //         </ListItemButton>
+    //       </ListItem>
+    //     ))}
+    //   </List>
+    // )
+    //     }
+
+
+  return (
+    <List
+      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', pt: 3 }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      // subheader={
+      //   <ListSubheader component="div" id="nested-list-subheader">
+      //     Nested List Items
+      //   </ListSubheader>
+      // }
+    >
+      <ListItemButton onClick={handleClick}>
+        {/* <ListItemIcon> */}
+        {/* </ListItemIcon> */}
+        <ListItemText primary="Select a Child" />
+        {open ? <ExpandLess /> : <ExpandMore />}
+      </ListItemButton>
+      <Collapse in={!open} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
         {children.map((value) => (
-          <ListItem disablePadding key={value.id}>
+          <ListItem disablePadding key={value.id}
+              >
             <ListItemButton
               divider
               onClick={() => history.push(`/child/assign/${value.id}`)}  
@@ -67,7 +116,8 @@ export default function ChildList(props) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
-    );
-  
-}
+        </List>
+      </Collapse>
+    </List>
+  );
+};
