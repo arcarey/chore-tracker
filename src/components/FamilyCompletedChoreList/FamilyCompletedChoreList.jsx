@@ -3,9 +3,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useDispatch, useSelector } from 'react-redux';
 
 const columns = [
-    { field: 'nickname', headerName: 'Name', width: 90 },
+    { field: 'nickname', headerName: 'Name', width: 80 },
     { field: 'description', headerName: 'Chore', width: 150 },
-    { field: 'date', headerName: 'Date', width: 95 }
+    { field: 'time_completed', headerName: 'Date', width: 123 }
 ];
 
 
@@ -34,8 +34,8 @@ export default function DataTable() {
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={20}
+        rowsPerPageOptions={[20]}
       />
     </div>
   );

@@ -26,6 +26,7 @@ import CompletedChorePage from '../CompletedChorePage/CompletedChorePage';
 
 import './App.css';
 import ChildChorePage from '../ChildChorePage/ChildChorePage';
+import { Box } from '@mui/material';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <Box sx={{pb: 10}}>
         <TopNav />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -189,8 +190,8 @@ function App() {
         {user.id && <BottomNav/>}
         
         {/* <Footer /> */}
-      </div>
-    </Router>
+      </Box >
+    </Router >
   );
 }
 

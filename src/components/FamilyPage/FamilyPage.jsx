@@ -37,7 +37,9 @@ export default function addChild() {
           <Typography component="h1" variant="h5" sx={{mt: 5}}>
             Welcome  {family?.name} Family
           </Typography>
-          <Box sx={{mt: 10}}>
+          <Typography sx={ {mt: 15 }} >Edit your family and chore list!</Typography>
+
+          <Box sx={{mt: 1}}>
             <Button
                 variant="contained"
                 sx={{padding: 2, margin: 2}}

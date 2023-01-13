@@ -1,7 +1,9 @@
 const express = require('express');
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 const pool = require('../modules/pool');
-const router = express.Router();
+const router = express.Router(); 
+
+
 
 // add new completed chore
 router.post('/', rejectUnauthenticated, (req, res) => {
@@ -33,7 +35,13 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   const queryValues = [req.user.family_id]
   pool
   .query(queryText, queryValues)
-  .then(result => res.send(result.rows))
+  .then(result => {
+    result.rows.forEach(element => {
+      element.time_completed = element.time_completed.toLocaleDateString("en-US", { weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric' })
+    });
+    res.send(result.rows)
+  
+  })
   .catch(err => {
       console.log('Error making get request for completed chores', err);
       res.sendStatus(500);

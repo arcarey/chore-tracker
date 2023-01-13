@@ -30,7 +30,7 @@ export default function ChoreList() {
     }
 
   return (
-    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', mt: 5}}>
       {chores.map((value) => (
         <ListItem
           key={value.id}
