@@ -88,17 +88,23 @@ PRIORITY LIST:
     [√] schedule and test Cron schedule
     [√] write program to check whole user_chore and reactivate the stuff it should
 [√] Add and remove chores from a child while keeping the completed chore log
+
 [ ] Make child detail a MUI swipeable drawer 
 [ ] make sure the back button starts to work
 
-[ ] UR sure dialogues on delete
+[√] UR sure dialogues on delete
+[ ] can't remove a chore that's already assigned to a person. maybe do an error message?
 
 ## OTHER MAJOR STYLING
 [ ] New Theme colors
+[ ] different banner color???
+[√] Find another place for more contrast in the app
 [ ] App Specific design (maybe background on login or something???)
 [√] Add the .env file
-[ ] child list needs to feel like buttons
+[√] child list needs to feel like buttons... make it button color???
 [ ] family landing page add chore
+[ ] tab header change to Chore-Tracker
+
 
 
 

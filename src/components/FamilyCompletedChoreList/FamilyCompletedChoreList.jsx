@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const columns = [
     { field: 'nickname', headerName: 'Name', width: 80 },
     { field: 'description', headerName: 'Chore', width: 150 },
-    { field: 'time_completed', headerName: 'date', width: 123 }
+    { field: 'time_completed', headerName: 'Date', width: 123 }
 ];
 
 
