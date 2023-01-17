@@ -18,7 +18,6 @@ CREATE TABLE "user" (
 CREATE TABLE "chore" (
 	"id" serial NOT NULL,
 	"description" TEXT NOT NULL,
-	"val" serial NOT NULL,
 	"family_id" int NOT NULL,
 	CONSTRAINT "chore_pk" PRIMARY KEY ("id")
 ) WITH (

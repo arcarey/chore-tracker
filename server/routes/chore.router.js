@@ -23,10 +23,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // creates a new chore assigned to a whole family
 router.post('/', rejectUnauthenticated, (req, res) => {
   const queryText = `
-  INSERT INTO chore ( "description", "val", "family_id" )
-  VALUES ($1, $2, $3);
+  INSERT INTO chore ( "description", "family_id" )
+  VALUES ($1, $2);
   `
-  const queryValues = [req.body.description, req.body.val, req.user.family_id]
+  const queryValues = [req.body.description, req.user.family_id]
   pool
     .query(queryText, queryValues)
     .then(result => res.sendStatus(201))
