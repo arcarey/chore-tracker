@@ -31,7 +31,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     .query(queryText, queryValues)
     .then(result => res.sendStatus(201))
     .catch(err => {
-      console.log('Error adding chore');
+      console.log('Error adding chore', err);
       res.sendStatus(500);      
     })
 

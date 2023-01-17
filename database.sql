@@ -74,19 +74,24 @@ CREATE TABLE "completed_chore" (
 
 
 
+
 ALTER TABLE "user" ADD CONSTRAINT "user_fk0" FOREIGN KEY ("family_id") REFERENCES "family"("id");
 
-ALTER TABLE "chore" ADD CONSTRAINT "chore_fk0" FOREIGN KEY ("family_id") REFERENCES "family"("id");
+ALTER TABLE "completed_chore" ADD CONSTRAINT "user" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE;
 
-ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
-ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk1" FOREIGN KEY ("chore_id") REFERENCES "chore"("id");
+ALTER TABLE "chore" ADD CONSTRAINT "chore_fk0" FOREIGN KEY ("family_id") REFERENCES "family"("id") ON DELETE SET NULL;
+
+ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE;
+
+ALTER TABLE "user_chore" ADD CONSTRAINT "user_chore_fk1" FOREIGN KEY ("chore_id") REFERENCES "chore"("id") ON DELETE CASCADE;
 
 ALTER TABLE "goal_prog" ADD CONSTRAINT "goal_prog_fk0" FOREIGN KEY ("user_id") REFERENCES "user"("id");
 
+ALTER TABLE "public"."completed_chore"
+  ADD COLUMN "family_id" integer,
+  ADD CONSTRAINT "family.id" FOREIGN KEY ("family_id") REFERENCES "public"."family"("id") ON DELETE CASCADE;
 
-ALTER TABLE "completed_chore" ADD CONSTRAINT "completed_chore_fk0" FOREIGN KEY ("user_chore_id") REFERENCES "user_chore"("id");
-
-
+ALTER TABLE "completed_chore" ADD CONSTRAINT "completed_chore_fk0" FOREIGN KEY ("user_chore_id") REFERENCES "user_chore"("id") ON DELETE SET NULL;
 
 
 -- SQL Queries for CRUD
