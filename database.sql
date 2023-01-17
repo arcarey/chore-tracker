@@ -29,7 +29,7 @@ CREATE TABLE "chore" (
 
 CREATE TABLE "user_chore" (
 	"user_id" int NOT NULL,
-	"chore_id" int NOT NULL,
+	"chore_id" int,
 	"is_active" bool NOT NULL DEFAULT 'true',
 	"id" serial NOT NULL,
 	"recurrence" varchar(24) NOT NULL,
