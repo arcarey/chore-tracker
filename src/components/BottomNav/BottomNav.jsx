@@ -26,7 +26,7 @@ export default function BottomNav(props) {
             >
             <BottomNavigationAction label="Home" icon={<HomeIcon />} onClick={ () => history.push('/home')} />
             <Divider orientation='vertical' variant='fullWidth'></Divider>
-            <BottomNavigationAction label="Info" icon={<InfoIcon />} onClick={() => history.push('/home')}/>
+            <BottomNavigationAction label="Info" icon={<InfoIcon />} onClick={() => history.push('/info')}/>
             <Divider orientation='vertical' variant='fullWidth'></Divider>
             <BottomNavigationAction label="Complete" icon={<GradingIcon />} onClick={() => history.push('/complete')}/>
             <Divider orientation='vertical' variant='fullWidth'></Divider>

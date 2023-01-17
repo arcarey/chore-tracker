@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
+import { MailRounded } from '@mui/icons-material';
 
 
 export default function ButtonAppBar() {
@@ -17,7 +18,7 @@ export default function ButtonAppBar() {
   }
   
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, }}>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1, padding: '12px' }}>

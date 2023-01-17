@@ -66,7 +66,7 @@ export default function ChildList(props) {
 
     if (props.showDelete){
       return (
-        <List sx={{ width: '100%', maxWidth: 360,  backgroundColor: 'paper', marginTop: '40px' }}>
+        <List  sx={{ width: '100%', maxWidth: 360,  backgroundColor: 'paper', marginTop: '40px' }}>
           {children.map((value) => (
             <ListItem
               onClick={() => history.push(`/child/assign/${value.id}`)}  
