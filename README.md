@@ -8,19 +8,13 @@ Duration: 2 Week Sprint
 
 
 
-To see the fully functional site, please visit: DEPLOYED VERSION OF APP
+To see the fully functional site, please visit: https://arcane-mountain-92426.herokuapp.com/#/home
 To see sample data loaded log in with the username admin password admin. 
 to see a sample child view log in to username Child1, password Child1.
 
-Screen Shot
+This application was designed mobile first.
 
-Include one or two screen shots of your project here (optional). Remove if unused.
-Prerequisites
 
-Link to software that is required to install the app (e.g. node).
-
-    Node.js
-    List other prerequisites here
 
 Installation
 
